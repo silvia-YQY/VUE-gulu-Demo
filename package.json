@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/silvia-YQY/VUE-gulu-Demo/issues"
   },
-  "homepage": "https://github.com/silvia-YQY/VUE-gulu-Demo#readme"
+  "homepage": "https://github.com/silvia-YQY/VUE-gulu-Demo#readme",
+  "dependencies": {
+    "vue": "^2.5.17"
+  }
 }
