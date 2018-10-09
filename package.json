@@ -22,5 +22,8 @@
   "homepage": "https://github.com/silvia-YQY/VUE-gulu-Demo#readme",
   "dependencies": {
     "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.10.2"
   }
 }
