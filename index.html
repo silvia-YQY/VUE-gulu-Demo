@@ -6,6 +6,48 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VUE-UI-DEMO</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        :root{
+            --button-height:32px;
+            --font-size:14px;
+            --button-background: #fff;
+            --botton-active-background: #eee;
+            --color: #333;
+            --border-color: #999;
+            --border-color-hover: #666;
+            --border-radius: 4px;
+        }
+        #app{
+            margin:20px;
+        }
+        body{
+            font-size:var(--font-size);
+        }
+    </style>
+    <style>
+        .g-button{
+            font-size:var(--font-size);
+            height: var(--button-height);
+            background: var(--button-background);
+            padding:0 1em;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+        }
+        .g-button:hover{
+            border-color:var(--border-color-hover);
+        }
+        .g-button:active{
+            background-color:var(--botton-active-background);
+        }
+        .g-button:focus{
+            outline:none;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
