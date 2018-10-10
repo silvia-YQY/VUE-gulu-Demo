@@ -7,14 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VUE-UI-DEMO</title>
     <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        :root{
-            --button-height:32px;
-            --font-size:14px;
+
+        :root {
+            --button-height: 32px;
+            --font-size: 14px;
             --button-background: #fff;
             --botton-active-background: #eee;
             --color: #333;
@@ -22,26 +23,31 @@
             --border-color-hover: #666;
             --border-radius: 4px;
         }
-        #app{
-            margin:20px;
+
+        #app {
+            margin: 20px;
         }
-        body{
-            font-size:var(--font-size);
+
+        body {
+            font-size: var(--font-size);
         }
     </style>
     <style>
-        .icon{
-            width:1em;
+        .icon {
+            width: 1em;
             height: 1em;
         }
     </style>
-    
+
 </head>
 <body>
 <div id="app">
-    <g-button><svg class="icon"><use xlink:href="#i-settings"></use></svg> 我是插槽</g-button>
-    <g-button>按钮</g-button>
-    <g-button>kk</g-button>
+    <g-button icon="settings">
+
+        我是插槽
+    </g-button>
+    <g-button icon="settings" icon-position="icon-right">按钮</g-button>
+    <g-button icon="settings" icon-position="icon-left">kk</g-button>
 </div>
 
 <script src="./src/app.js"></script>
