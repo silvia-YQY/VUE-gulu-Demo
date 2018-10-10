@@ -29,15 +29,22 @@
             font-size:var(--font-size);
         }
     </style>
+    <style>
+        .icon{
+            width:1em;
+            height: 1em;
+        }
+    </style>
     
 </head>
 <body>
 <div id="app">
-    <g-button>我是插槽</g-button>
+    <g-button><svg class="icon"><use xlink:href="#i-settings"></use></svg> 我是插槽</g-button>
     <g-button>按钮</g-button>
     <g-button>kk</g-button>
 </div>
 
 <script src="./src/app.js"></script>
+<script src="//at.alicdn.com/t/font_867874_20d1r90u1k9.js"></script>
 </body>
 </html>
