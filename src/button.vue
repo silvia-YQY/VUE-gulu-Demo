@@ -1,5 +1,5 @@
 <template>
-    <button class="g-button" :class="{[iconPosition]:true} ">
+    <button class="g-button" :class="{[`icon-${iconPosition}`]:true} ">
         <svg v-if="icon" class="icon">
             <use :xlink:href="`#i-${icon}`"></use>
         </svg>
@@ -30,6 +30,7 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
+        vertical-align: middle;
         &:hover {
             border-color: var(--border-color-hover);
         }
