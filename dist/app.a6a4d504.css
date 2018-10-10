@@ -1,0 +1,17 @@
+.g-button {
+  font-size: var(--font-size);
+  height: var(--button-height);
+  background: var(--button-background);
+  padding: 0 1em;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+.g-button:hover {
+  border-color: var(--border-color-hover);
+}
+.g-button:active {
+  background-color: var(--botton-active-background);
+}
+.g-button:focus {
+  outline: none;
+}
