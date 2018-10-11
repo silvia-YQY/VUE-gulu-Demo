@@ -15,7 +15,24 @@
         data() {
             return {}
         },
-        props: ['icon', 'iconPosition']
+        // props: ['icon', 'iconPosition']
+        props: {
+            icon: {
+                type: String,
+                default: ''
+            },
+            iconPosition: {
+                type: String,
+                default: 'left',
+                validator(value) {
+                    if (value !== 'left' && value !== 'right') {
+                        return false
+                    } else {
+                        return true
+                    }
+                }
+            }
+        }
     }
 </script>
 
@@ -42,7 +59,7 @@
         }
         > .icon {
             order: 1;
-            margin-right:.1em;
+            margin-right: .1em;
         }
         > .content {
             order: 2;
@@ -50,7 +67,7 @@
         &.icon-right {
             > .icon {
                 order: 2;
-                margin-right:0;
+                margin-right: 0;
                 margin-left: .1em;
             }
             > .content {
