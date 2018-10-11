@@ -5,19 +5,16 @@
 </template>
 
 <script>
-export default {
-    props:{
-        name:{
-            default:'',
-            type:String
+    export default {
+        props: {
+            name: {
+                default: '',
+                type: String
+            }
         }
     }
-}
 </script>
 
 <style lang="scss">
-    .g-icon {
-        width: 1em;
-        height: 1em;
-    }
+    .g-icon {width: 1em;height: 1em;}
 </style>
