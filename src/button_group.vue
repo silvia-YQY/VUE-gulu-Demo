@@ -6,7 +6,16 @@
 </template>
 
 <script>
-    export default {}
+    export default {
+        mounted(){
+            for(let node of this.$el.children){
+                let name = node.nodeName.toLocaleLowerCase()
+                if(name !== 'button'){
+                    console.warn(`g-button-group 的子组件应该全是 g-button，但你写的是 ${name}`)
+                }
+            }
+        }
+    }
 </script>
 
 <style lang="scss">
