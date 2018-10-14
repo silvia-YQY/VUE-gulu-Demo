@@ -18,6 +18,9 @@ new Vue({
 
 // 单元测试
 import chai from 'chai';
+import spied from 'chai-spies'
+
+chai.use(spies)
 const expect = chai.expect
 
 // 一、测试按钮icon
@@ -124,11 +127,11 @@ const expect = chai.expect
         }
     })
     gButton.$mount()  // 挂载到页面上
-    gButton.$on('click',() => {
-        expect(1).to.eq(1)  // 只需要这句话被运行即说明click事件被触发
-    })
+    let spy = chai.spy(()=>{})
+    gButton.$on('click',spy)
     let button = gButton.$el
     button.click()
+    expect(spy).to.have.been.called()
 
     // 清理
     gButton.$el.remove()
