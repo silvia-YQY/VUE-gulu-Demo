@@ -35,7 +35,8 @@
         <g-input value="张3" readonly></g-input>
     </div>
     <div class="box">
-        <g-input value="张4"  error="姓名不能少于两个字"></g-input>
+        <g-input value="张4" v-model="message" error="姓名不能少于两个字"></g-input>
+        <p>{{message}}</p>
     </div>
     <div class="box">
         <g-input value="张5" @change="inputChange"></g-input>
