@@ -1,69 +1,103 @@
 <!doctype html>
 <html lang="zh-Hans">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>VUE-UI-DEMO</title>
-    <style>
-        * {margin: 0;padding: 0;box-sizing: border-box;}
-        :root {
-            --button-height: 32px;
-            --font-size: 14px;
-            --button-background: #fff;
-            --botton-active-background: #eee;
-            --color: #333;
-            --border-color: #999;
-            --border-color-hover: #666;
-            --border-radius: 4px;
-        }
-        #app {margin: 20px;}
-        body { font-size: var(--font-size);}
-    </style>
-    <style>
-        .box{
-            margin:20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VUE-UI-DEMO</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --button-height: 32px;
+      --font-size: 14px;
+      --button-background: #fff;
+      --botton-active-background: #eee;
+      --color: #333;
+      --border-color: #999;
+      --border-color-hover: #666;
+      --border-radius: 4px;
+    }
+
+    #app {
+      margin: 20px;
+    }
+
+    body {
+      font-size: var(--font-size);
+    }
+  </style>
+  <style>
+    .box {
+      margin: 20px;
+    }
+  </style>
 
 </head>
+
 <body>
-<div id="app">
+  <div id="app">
+    <g-row>
+      <g-col>1</g-col>
+      <g-col>2</g-col>
+    </g-row>
+    <g-row>
+      <g-col>1</g-col>
+      <g-col>2</g-col>
+      <g-col>2</g-col>
+    </g-row>
+    <g-row>
+      <g-col span="4">1</g-col>
+      <g-col span="6">2</g-col>
+      <g-col span="3"> 2</g-col>
+      <g-col span="7">2</g-col>
+      <g-col span="4">1</g-col>
+    </g-row>
+    <g-row>
+      <g-col span="2">1</g-col>
+      <g-col span="22">2</g-col>
+    </g-row>
+
+    <hr>
     <div class="box">
-        <g-input value="张三" disabled ></g-input>
-        <g-input value="张3" readonly></g-input>
+      <g-input value="张三" disabled></g-input>
+      <g-input value="张3" readonly></g-input>
     </div>
     <div class="box">
-        <g-input value="张4" v-model="message" error="姓名不能少于两个字"></g-input>
-        <p>{{message}}</p>
+      <g-input value="张4" v-model="message" error="姓名不能少于两个字"></g-input>
+      <p>{{message}}</p>
     </div>
     <div class="box">
-        <g-input value="张5" @change="inputChange"></g-input>
+      <g-input value="张5" @change="inputChange"></g-input>
     </div>
 
 
     <div style="margin: 20px;">
-        <g-button :loading="loading" icon="settings"
-                  @click="loading = !loading"
-        >
+      <g-button :loading="loading" icon="settings" @click="loading = !loading">
 
-            我是插槽
-        </g-button>
-        <g-button icon="settings"  :loading="true" icon-position="right">按钮</g-button>
-        <g-button icon="settings"  :loading="true" icon-position="left">kk</g-button>
-        <g-button-group>
-            <g-button icon="left" >上一页</g-button>
-            <g-button>更多</g-button>
-            <g-button icon="right" icon-position="right">下一页</g-button>
-        </g-button-group>
+        我是插槽
+      </g-button>
+      <g-button icon="settings" :loading="true" icon-position="right">按钮</g-button>
+      <g-button icon="settings" :loading="true" icon-position="left">kk</g-button>
+      <g-button-group>
+        <g-button icon="left">上一页</g-button>
+        <g-button>更多</g-button>
+        <g-button icon="right" icon-position="right">下一页</g-button>
+      </g-button-group>
     </div>
 
 
     <div id="test"></div>
-</div>
+  </div>
 
-<script src="./src/app.js"></script>
-<!--<script src="//at.alicdn.com/t/font_867874_zaejb8l7vuq.js"></script>-->
+  <script src="./src/app.js"></script>
+  <!--<script src="//at.alicdn.com/t/font_867874_zaejb8l7vuq.js"></script>-->
 </body>
+
 </html>
