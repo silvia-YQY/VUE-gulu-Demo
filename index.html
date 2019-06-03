@@ -14,6 +14,10 @@
       box-sizing: border-box;
     }
 
+    img {
+      max-width: 100%;
+    }
+
     :root {
       --button-height: 32px;
       --font-size: 14px;
@@ -37,6 +41,14 @@
     .box {
       margin: 20px;
     }
+
+    .demoBox {
+      height: 50px;
+      background: grey;
+      border: 1px solid;
+    }
+
+    .log-wrapper {}
   </style>
 
 </head>
@@ -45,25 +57,38 @@
   <div id="app">
     <div style="border:1px solid;height: 100%;">
 
-      <g-row gutter="20">
-        <g-col>1</g-col>
-        <g-col>2</g-col>
+      <g-row class="topbar">
+        <g-col class="demoBox" span="9">
+          <g-row>
+            <g-col>1</g-col>
+            <g-col>2</g-col>
+            <g-col>3</g-col>
+            <g-col>4</g-col>
+          </g-row>
+        </g-col>
+        <g-col class="demoBox" span="15">
+          <g-row align="right">
+            <g-col>1</g-col>
+            <g-col>2</g-col>
+            <g-col>3</g-col>
+            <g-col>4</g-col>
+            <g-col>5</g-col>
+            <g-col>6</g-col>
+            <g-col>7</g-col>
+          </g-row>
+        </g-col>
       </g-row>
-      <g-row gutter="20">
-        <g-col>1</g-col>
-        <g-col>2</g-col>
-        <g-col>2</g-col>
-      </g-row>
-      <g-row gutter="20">
-        <g-col span="4">1</g-col>
-        <g-col span="6" offset="4">2</g-col>
-        <g-col span="3"> 2</g-col>
-        <g-col span="7" offset="2">2</g-col>
-        <g-col span="4">1</g-col>
-      </g-row>
-      <g-row gutter="20">
-        <g-col span="1">1</g-col>
-        <g-col span="20" offset="2">2</g-col>
+      <g-row class="logo-and-search-and-g">
+        <g-col class="demoBox" span="4">
+          <g-row align="center">
+            <g-col>
+              <img width="50" class="logo" src="https://www.apbenben.com/resources/league/img/logo.png" alt="">
+
+            </g-col>
+          </g-row>
+        </g-col>
+        <g-col class="demoBox" span="14">2</g-col>
+        <g-col class="demoBox" span="6">2</g-col>
       </g-row>
 
     </div>
