@@ -1,5 +1,5 @@
 <template>
-  <div class="row" :style="{marginLeft:-gutter/2+'px',marginRight:-gutter/2+'px'}">
+  <div class="row" :style="rowStyle">
     <slot></slot>
   </div>
 </template>
@@ -12,22 +12,25 @@ export default {
       type: [Number, String]
     }
   },
-  created(){    
-    console.log('created');
-    // created的时候是没有儿子    
-  },
-  mounted(){
-    console.log('mounted',this.gutter);
+  mounted() {
     // 在row挂载后，给所有子元素传gutter值
-    this.$children.forEach(vm=>{
-      vm.gutter = this.gutter
-    })
+    this.$children.forEach(vm => {
+      vm.gutter = this.gutter;
+    });
+  },
+  computed: {
+    rowStyle() {
+      return {
+        marginLeft: -this.gutter / 2 + "px",
+        marginRight: -this.gutter / 2 + "px"
+      };
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.row{
+.row {
   display: flex;
 }
 </style>

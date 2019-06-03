@@ -1,12 +1,6 @@
 <template>
-  <div class="col" 
-    :style="{paddingLeft:gutter/2+'px',paddingRight:gutter/2+'px'}"
-    :class="[span && `col-${span}`,offset && `offset-${offset}`]"
-    >
-    <div>
-      <slot></slot>
-    </div>
-    
+  <div class="col" :style="colStyle" :class="colClass">
+    <slot></slot>
   </div>
 </template>
 
@@ -21,17 +15,25 @@ export default {
       type: [Number, String]
     }
   },
-  data(){
-    return{
+  data() {
+    return {
       gutter: 0
+    };
+  },
+  computed: {
+    colClass() {
+      let { span, offset } = this;
+      return [
+        span && `col-${span}`, 
+        offset && `offset-${offset}`
+      ];
+    },
+    colStyle() {
+      return {
+        paddingLeft: this.gutter / 2 + "px",
+        paddingRight: this.gutter / 2 + "px"
+      };
     }
-  },
-  created(){    
-    console.log('col created');
-    // created的时候是没有儿子    
-  },
-  mounted(){
-    console.log('col mounted',this.gutter);
   }
 };
 </script>
@@ -41,12 +43,6 @@ export default {
 .col {
   height: 100px;
   width: 50%;
-   
-  div{
-    border: 1px solid red; 
-    background: grey;    
-  }
-
   $class-prefix: col-; // 前缀
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
