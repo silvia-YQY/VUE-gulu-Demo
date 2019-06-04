@@ -49,13 +49,17 @@ export default {
   computed: {
     colClass() {
       let { span, offset, ipad, narrowPc, pc, widePc } = this;
+      console.log("narrowPc", narrowPc);
+      console.log("ipad", ipad);
+      // console.log('this',this);
+
       return [
         span && `col-${span}`,
         offset && `offset-${offset}`,
-        ...(ipad && [`col-ipad-${ipad.span}`]),
-        ...(narrowPc && [`col-narrowPc-${narrowPc.span}`]),
-        ...(pc && [`col-pc-${pc.span}`]),
-        ...(widePc && [`col-widePc-${widePc.span}`])
+        ...(ipad ? [`col-ipad-${ipad.span}`] : []),
+        ...(narrowPc ? [`col-narrow-pc-${narrowPc.span}`] : []),
+        ...(pc ? [`col-pc-${pc.span}`] : []),
+        ...(widePc ? [`col-wide-pc-${widePc.span}`] : [])
       ];
     },
     colStyle() {
@@ -71,7 +75,6 @@ export default {
 
 <style lang="scss" scoped>
 .col {
-  height: 100px;
   $class-prefix: col-; // 前缀
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
@@ -85,8 +88,8 @@ export default {
       margin-left: ($n/24) * 100%;
     }
   }
-  
-  @media (min-width: 577px) and (max-width: 768px) {
+
+  @media (min-width: 577px) {
     $class-prefix: col-ipad-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
@@ -102,7 +105,7 @@ export default {
     }
   }
 
-  @media (min-width: 769px) and (max-width: 992px) {
+  @media (min-width: 769px) {
     $class-prefix: col-narrow-pc-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
@@ -118,7 +121,7 @@ export default {
     }
   }
 
-  @media (min-width: 993px) and (max-width: 1200px) {
+  @media (min-width: 992px) {
     $class-prefix: col-pc-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
@@ -134,7 +137,7 @@ export default {
     }
   }
 
-  @media (min-width: 1201px) {
+  @media (min-width: 1200px) {
     $class-prefix: col-wide-pc-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
