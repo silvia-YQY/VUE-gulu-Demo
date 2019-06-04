@@ -59,8 +59,10 @@ export default {
       ];
     },
     colStyle() {
+      console.log('获取padding');
+      
       return {
-        paddingLeft: this.gutter / 2 + "pcreateClasss",
+        paddingLeft: this.gutter / 2 + "px",
         paddingRight: this.gutter / 2 + "px"
       };
     }

@@ -4,8 +4,8 @@
   "description": "UI框架Demo",
   "main": "./dist/index.js",
   "scripts": {
-    "dev-test": "parcel watch test/* --no-cache & karma start",
     "start": "parcel --no-cache index.html",
+    "dev-test": "parcel watch test/* --no-cache & karma start",
     "test": " parcel build test/* --no-cache --no-minify && karma start --single-run"
   },
   "repository": {
