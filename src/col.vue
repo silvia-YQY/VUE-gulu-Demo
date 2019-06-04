@@ -49,24 +49,33 @@ export default {
   computed: {
     colClass() {
       let { span, offset, ipad, narrowPc, pc, widePc } = this;
-      console.log("narrowPc", narrowPc);
-      console.log("ipad", ipad);
-      // console.log('this',this);
-
+      let createClasses = this.createClasses;
       return [
-        span && `col-${span}`,
-        offset && `offset-${offset}`,
-        ...(ipad ? [`col-ipad-${ipad.span}`] : []),
-        ...(narrowPc ? [`col-narrow-pc-${narrowPc.span}`] : []),
-        ...(pc ? [`col-pc-${pc.span}`] : []),
-        ...(widePc ? [`col-wide-pc-${widePc.span}`] : [])
+        ...createClasses({ span, offset }),
+        ...createClasses(ipad, "ipad-"),
+        ...createClasses(narrowPc, "narrow-pc-"),
+        ...createClasses(pc, "pc-"),
+        ...createClasses(widePc, "wide-pc-")
       ];
     },
     colStyle() {
       return {
-        paddingLeft: this.gutter / 2 + "px",
+        paddingLeft: this.gutter / 2 + "pcreateClasss",
         paddingRight: this.gutter / 2 + "px"
       };
+    }
+  },
+  methods: {
+    createClasses(obj, str = "") {
+      if (!obj) return [];
+      let array = [];
+      if (obj.span) {
+        array.push(`col-${str}${obj.span}`);
+      }
+      if (obj.offset) {
+        array.push(`offset-${str}${obj.offset}`);
+      }
+      return array;
     }
   }
 };
