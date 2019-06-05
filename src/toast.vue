@@ -1,7 +1,9 @@
 <template>
   <div class="toast" ref="wrapper">
-    <slot v-if="!enableHtml"></slot>
-    <div v-else v-html="$slots.default[0]"></div>
+    <div class="msg">
+      <slot v-if="!enableHtml"></slot>
+      <div v-else v-html="$slots.default[0]"></div>
+    </div>
     <div class="line" ref="line"></div>
     <span class="close" v-if="closeButton" @click="onClickClose" v-html="closeButton.text"></span>
   </div>
@@ -35,21 +37,27 @@ export default {
     }
   },
   mounted() {
-    if (this.autoClose) {
-      setTimeout(() => {
-        this.close();
-      }, this.autlCloseDelay * 1000);
-    }
-    // 因为是先挂载toast到vue上，然后在挂载在页面上，
-    // 故存在异步的问题。需要用nextTick进行同步处理
-    this.$nextTick(() => {
-      // 因为style只能获取内联元素，不能获取块状元素
-      // 块状元素需要用getBoundingClientRect的API获取
-      this.$refs.line.style.height =
-        this.$refs.wrapper.getBoundingClientRect().height + "px";
-    });
+    this.execActoClose();
+    this.updateStyle();
   },
   methods: {
+    updateStyle() {
+      // 因为是先挂载toast到vue上，然后在挂载在页面上，
+      // 故存在异步的问题。需要用nextTick进行同步处理
+      this.$nextTick(() => {
+        // 因为style只能获取内联元素，不能获取块状元素
+        // 块状元素需要用getBoundingClientRect的API获取
+        this.$refs.line.style.height =
+          this.$refs.wrapper.getBoundingClientRect().height + "px";
+      });
+    },
+    execActoClose() {
+      if (this.autoClose) {
+        setTimeout(() => {
+          this.close();
+        }, this.autlCloseDelay * 1000);
+      }
+    },
     close() {
       this.$el.remove(); //
       this.$destroy(); // destroy不会删除页面元素
@@ -94,6 +102,9 @@ $toast-color: #fff;
     height: 100%;
     border-left: 1px solid #666;
     margin-left: 16px;
+  }
+  .msg {
+    padding: 8px 0px;
   }
 }
 </style>
