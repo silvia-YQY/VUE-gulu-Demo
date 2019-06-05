@@ -10,6 +10,5 @@ export default {
       let element = document.querySelector('.toast');
       element.appendChild(toast.$el)  //  在页面挂载（实
     }
-
   }
 }
