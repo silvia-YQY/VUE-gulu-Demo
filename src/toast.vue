@@ -1,7 +1,7 @@
 <template>
   <div class="toast">
-    <!-- <slot></slot> -->
-    <div v-html="$slots.default[0]"></div>
+    <slot v-if="!enableHtml"></slot>
+    <div v-else v-html="$slots.default[0]"></div>
     <div class="line"></div>
     <span 
       class="close" 
@@ -33,6 +33,10 @@ export default {
           callback: undefined
         };
       }
+    },
+    enableHtml:{
+      type:Boolean,
+      default:false
     }
   },
   mounted() {

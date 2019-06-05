@@ -50,7 +50,8 @@ new Vue({
             toast.log()
             console.log('用户知道了');
           }
-        }
+        },
+        enableHtml:false
       })
     }
   }
