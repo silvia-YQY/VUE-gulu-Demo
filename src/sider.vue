@@ -18,6 +18,7 @@ export default {
     hide() {
       this.visible = !this.visible;
     },
+    // js控制动画
     // 当与 CSS 结合使用时
     // 回调函数 done 是可选的
     enter: function(el, done) {

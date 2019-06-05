@@ -4,8 +4,15 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "GuluContent"
+};
+</script>
+
+
 <style lang="scss" scoped>
-.content{
+.content {
   flex-grow: 1; // 自动沾满
 }
 </style>

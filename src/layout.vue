@@ -15,6 +15,7 @@ export default {
     };
   },
   mounted() {
+    // 判断是否有sider，有就加上hasSider的class
     this.$children.forEach(vm => {
       if (vm.$options.name === "GuluSider") {
         this.layoutClass.hasSider = true;
@@ -31,7 +32,7 @@ export default {
   flex-grow: 1;
   flex-direction: column;
   &.hasSider {
-    flex-direction: row;
+    flex-direction: row;  // 若有sider，就变为竖形
   }
 }
 </style>
