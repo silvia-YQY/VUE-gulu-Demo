@@ -1,6 +1,7 @@
 <template>
   <div class="toast">
-    <slot></slot>
+    <!-- <slot></slot> -->
+    <div v-html="$slots.default[0]"></div>
     <div class="line"></div>
     <span 
       class="close" 
