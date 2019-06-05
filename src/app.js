@@ -39,9 +39,7 @@ new Vue({
   created() {
   },
   methods: {
-    inputChange() {
-
-    },
+    inputChange() {},
     showToast() {
       this.$toast(`文字`, {
         closeButton: {
