@@ -1,14 +1,9 @@
 <template>
-  <div class="toast">
+  <div class="toast" ref="wrapper">
     <slot v-if="!enableHtml"></slot>
     <div v-else v-html="$slots.default[0]"></div>
-    <div class="line"></div>
-    <span 
-      class="close" 
-      v-if="closeButton" 
-      @click="onClickClose"
-      v-html="closeButton.text"
-      ></span>
+    <div class="line" ref="line"></div>
+    <span class="close" v-if="closeButton" @click="onClickClose" v-html="closeButton.text"></span>
   </div>
 </template>
 <script>
@@ -34,9 +29,9 @@ export default {
         };
       }
     },
-    enableHtml:{
-      type:Boolean,
-      default:false
+    enableHtml: {
+      type: Boolean,
+      default: false
     }
   },
   mounted() {
@@ -45,15 +40,22 @@ export default {
         this.close();
       }, this.autlCloseDelay * 1000);
     }
+    // 因为是先挂载toast到vue上，然后在挂载在页面上，
+    // 故存在异步的问题。需要用nextTick进行同步处理
+    this.$nextTick(() => {
+      // 因为style只能获取内联元素，不能获取块状元素
+      // 块状元素需要用getBoundingClientRect的API获取
+      this.$refs.line.style.height =
+        this.$refs.wrapper.getBoundingClientRect().height + "px";
+    });
   },
   methods: {
     close() {
       this.$el.remove(); //
       this.$destroy(); // destroy不会删除页面元素
     },
-    log(){
-      console.log('测试');
-      
+    log() {
+      console.log("测试");
     },
     onClickClose() {
       this.close();
@@ -66,7 +68,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 $font-size: 14px;
-$toast-height: 40px;
+$toast-min-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.5);
 $toast-color: #fff;
 .toast {
@@ -76,7 +78,7 @@ $toast-color: #fff;
   transform: translateX(-50%);
   font-size: $font-size;
   line-height: 1.8;
-  height: $toast-height;
+  min-height: $toast-min-height;
   display: flex;
   align-items: center;
   background: $toast-bg;
@@ -84,13 +86,14 @@ $toast-color: #fff;
   box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
   color: $toast-color;
   padding: 0 16px;
-}
-.close {
-  padding-left: 16px;
-}
-.line {
-  height: 100%;
-  border-left: 1px solid #666;
-  margin-left: 16px;
+  .close {
+    padding-left: 16px;
+    flex-shrink: 0; // 不缩，不换行
+  }
+  .line {
+    height: 100%;
+    border-left: 1px solid #666;
+    margin-left: 16px;
+  }
 }
 </style>
