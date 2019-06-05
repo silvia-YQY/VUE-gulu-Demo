@@ -36,14 +36,22 @@ new Vue({
       message: ''
     }
   },
-  created(){
+  created() {
   },
   methods: {
     inputChange() {
 
     },
     showToast() {
-      this.$toast('弹出的信息')
+      this.$toast(`<b>看看嘛！！</b>`, {
+        closeButton: {
+          text: '知道了',
+          callback(toast) {
+            toast.log()
+            console.log('用户知道了');
+          }
+        }
+      })
     }
   }
 });

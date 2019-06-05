@@ -2,7 +2,12 @@
   <div class="toast">
     <slot></slot>
     <div class="line"></div>
-    <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
+    <span 
+      class="close" 
+      v-if="closeButton" 
+      @click="onClickClose"
+      v-html="closeButton.text"
+      ></span>
   </div>
 </template>
 <script>
@@ -22,11 +27,9 @@ export default {
       default: () => {
         // 需要以函数的形式返回Object类型，因为不然的话会出现重复指向
         return {
-          // 用匿名函数的形式创建，每次都是新的
+          // 用匿名函数的形式创建返回，每次都是新的
           text: "关闭",
-          callback: toast => {
-            toast.close();
-          }
+          callback: undefined
         };
       }
     }
@@ -40,12 +43,18 @@ export default {
   },
   methods: {
     close() {
-      this.$el.remove();
-      this.$destroy();
+      this.$el.remove(); //
+      this.$destroy(); // destroy不会删除页面元素
+    },
+    log(){
+      console.log('测试');
+      
     },
     onClickClose() {
       this.close();
-      this.closeButton.callback();
+      if (this.closeButton && typeof this.closeButton.callback === "function") {
+        this.closeButton.callback(this); // this === toast实例
+      }
     }
   }
 };
