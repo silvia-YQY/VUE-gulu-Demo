@@ -1,18 +1,60 @@
 <template>
   <div class="toast">
     <slot></slot>
+    <div class="line"></div>
+    <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
   </div>
 </template>
 <script>
 export default {
-  name: "GuluToast"
+  name: "GuluToast",
+  props: {
+    autoClose: {
+      type: Boolean,
+      default: true
+    },
+    autlCloseDelay: {
+      type: Number,
+      default: 20
+    },
+    closeButton: {
+      type: Object,
+      default: () => {
+        // 需要以函数的形式返回Object类型，因为不然的话会出现重复指向
+        return {
+          // 用匿名函数的形式创建，每次都是新的
+          text: "关闭",
+          callback: toast => {
+            toast.close();
+          }
+        };
+      }
+    }
+  },
+  mounted() {
+    if (this.autoClose) {
+      setTimeout(() => {
+        this.close();
+      }, this.autlCloseDelay * 1000);
+    }
+  },
+  methods: {
+    close() {
+      this.$el.remove();
+      this.$destroy();
+    },
+    onClickClose() {
+      this.close();
+      this.closeButton.callback();
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
 $font-size: 14px;
 $toast-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.5);
-$toast-color:#fff;
+$toast-color: #fff;
 .toast {
   position: fixed;
   top: 0;
@@ -28,5 +70,13 @@ $toast-color:#fff;
   box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
   color: $toast-color;
   padding: 0 16px;
+}
+.close {
+  padding-left: 16px;
+}
+.line {
+  height: 100%;
+  border-left: 1px solid #666;
+  margin-left: 16px;
 }
 </style>
