@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/silvia-YQY/VUE-gulu-Demo.svg?branch=master)](https://travis-ci.org/silvia-YQY/VUE-gulu-Demo)
 
-## 介绍
+# 介绍
 
 ## 开始使用
 
